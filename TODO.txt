@@ -1,0 +1,50 @@
+# https://github.com/computercam/_unixconf_nix
+.
+├── _ # private / public keys (in a separate repo) for decrpyting age secrets
+│   ├── id_rsa.age
+│   ├── id_rsa.pub
+│   └── new_key
+├── flake.lock
+├── flake.nix # flake file is pretty bare, i just use it to import the the global configs and one single configuration.nix
+├── hosts # for different machines
+│   ├── hackinfrost
+│   │   ├── configuration.nix # system specific global configurations
+│   │   ├── modules # system specific modules folder
+│   │   └── modules.nix # modules are imported here (helps keep configuration.nix lean)
+│   ├── homeserver
+│   │   ├── configuration.nix
+│   │   ├── hardware-configuration.nix # hardware configs
+│   │   └── modules.nix
+│   ├── raspberrysky
+│   │   ├── configuration.nix
+│   │   ├── hardware-configuration.nix
+│   │   └── modules.nix
+├── modules
+│   ├── common
+│   │   ├── fonts
+│   │   └── home # Home Manager configs and helper files
+│   ├── global
+│   │   ├── global.nix # Configs that get put in every system, includes users and hostnames and all default options
+│   │   ├── macos.nix # Configs for all nix-darwin systems
+│   │   ├── nixos.nix # Configs for all nixos systems
+│   │   └── options.nix # global configuration options (username, hostname, localization)
+│   ├── macos # nix-darwin modules to include in host configurations
+│   │   ├── service-homebrew
+│   │   └── service-yabai
+│   └── nixos # nixos modules to include in host configurations
+│       ├── desktop-environment
+│       ├── desktop-environment-gnome
+│       ├── display-manager-gdm
+│       ├── hardware-nvidia
+│       ├── service-audio
+│       ├── service-kvm
+│       ├── service-networking
+│       ├── service-samba
+│       ├── service-ssh
+│       ├── service-sudo
+│       └── software-gaming
+└── secrets # Age encrypted secrets that get deployed to a system on rebuild
+    ├── borgbackup.age
+    ├── nextcloud_mysql_password.age
+    ├── secrets.nix
+    └── vscode_hashed_password.age

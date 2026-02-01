@@ -9,7 +9,7 @@
     } ];
 
     # Power off on lid close instead of sleep. This is ThinkPad specific
-    services.logind.lidSwitch = "hibernate";
+    services.logind.settings.Login.HandleLidSwitch = "hibernate";
 
     # Device Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [

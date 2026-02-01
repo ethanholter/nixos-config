@@ -51,11 +51,13 @@ in
     };
   };
 
-    # Gnome
+    # xserver
     services.xserver.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
     services.xserver.excludePackages = [ pkgs.xterm ];
+
+    # Gnome
+    services.displayManager.gdm.enable = true;
+    services.desktopManager.gnome.enable = true;
     environment.gnome.excludePackages = (with pkgs; [
       decibels
       epiphany
@@ -103,8 +105,6 @@ in
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.allowBroken = true;
 
-    programs.firefox.enable = true;
-
     virtualisation.docker.enable = true;
 
     # Packages
@@ -119,6 +119,7 @@ in
       gnomeExtensions.caffeine
       gnomeExtensions.dash-to-dock
       htop
+      firefox
       inetutils
       lazygit
       lshw

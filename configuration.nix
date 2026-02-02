@@ -30,26 +30,12 @@ in
     };
 
     # Kernel
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
     # Networking
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
-
-    networking.wg-quick.interfaces = {
-    wg0 = {
-      address = [ "10.1.1.7" ];
-      dns = [ "10.1.1.2" ];
-      privateKeyFile = "/etc/wireguard/privatekey";
-      peers = [
-        {
-          publicKey = "+y4BV3PpVHumAVRWJ+OFvugdytsKWhVDlgAI8ztG7nw=";
-          allowedIPs = [ "10.1.1.0/24" ];
-          endpoint = "170.9.235.19:51820";
-        }
-      ];
-    };
-  };
 
     # xserver
     services.xserver.enable = true;
@@ -106,26 +92,40 @@ in
     nixpkgs.config.allowBroken = true;
 
     virtualisation.docker.enable = true;
+    
+    # flatpak
+    services.flatpak.enable = true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal.config.common.default = "gtk";
+    systemd.services.flatpak-repo = {
+      wantedBy = [ "multi-user.target" ];
+      path = [ pkgs.flatpak ];
+      script = ''
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      '';
+    };
 
     # Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
       brightnessctl
       dconf-editor
       dig
+      firefox
       fzf
       gh
       git
       gnome-tweaks
       gnomeExtensions.caffeine
       gnomeExtensions.dash-to-dock
+      steam-devices-udev-rules
       htop
-      firefox
       inetutils
       lazygit
+      libreoffice
       lshw
-      pciutils
       nmap
       os-prober
+      pciutils
       python3
       reversal-icon-theme
       teams-for-linux
@@ -143,6 +143,4 @@ in
       nerd-fonts.fira-code
     ];
 
-    # Defines nixos version used for initial installation
-    system.stateVersion = "25.05"; # DO NOT CHANGE
   }

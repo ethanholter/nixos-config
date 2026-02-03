@@ -1,1 +1,1 @@
-/etc/nixos/devices/thinkpad.nix
+/etc/nixos/devices/desktop.nix

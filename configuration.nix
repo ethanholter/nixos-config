@@ -74,8 +74,14 @@ in
       fzf
       gh
       git
+      efibootmgr
+      gnome-tweaks
+      gnomeExtensions.caffeine
+      gnomeExtensions.dash-to-dock
+      steam-devices-udev-rules
       htop
       inetutils
+      bibata-cursors
       lazygit
       libreoffice
       lshw
@@ -88,6 +94,7 @@ in
       tmux
       tree
       vim
+      spotify
       vscode
       wget
       xclip

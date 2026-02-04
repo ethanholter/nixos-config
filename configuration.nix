@@ -37,46 +37,6 @@ in
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;
 
-    # xserver
-    services.xserver.enable = true;
-    services.xserver.excludePackages = [ pkgs.xterm ];
-
-    # Gnome
-    services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
-    environment.gnome.excludePackages = (with pkgs; [
-      decibels
-      epiphany
-      geary
-      gnome-connections
-      gnome-music
-      gnome-tour
-      gnome-user-docs
-    ]);
-
-    programs.dconf.profiles.user.databases = [
-      {
-        lockAll = true; # prevents overriding
-        settings = {
-          "org/gnome/desktop/wm/preferences" = {
-            button-layout = ":minimize,maximize,close";
-          };
-          "org/gnome/desktop/interface/clock-format" = {
-            clock-format = "12h";
-          };
-          "org/gnome/desktop/interface" = {
-            icon-theme = "Reversal";
-          };
-          "org/gnome/desktop/interface" = {
-            enable-hot-corners = false;
-          };
-          "org/gnome/desktop/notifications" = {
-            show-in-lock-screen = false;
-          };
-        };
-      }
-    ];
-
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
 
@@ -114,10 +74,6 @@ in
       fzf
       gh
       git
-      gnome-tweaks
-      gnomeExtensions.caffeine
-      gnomeExtensions.dash-to-dock
-      steam-devices-udev-rules
       htop
       inetutils
       lazygit
@@ -127,7 +83,6 @@ in
       os-prober
       pciutils
       python3
-      reversal-icon-theme
       teams-for-linux
       thunderbird
       tmux

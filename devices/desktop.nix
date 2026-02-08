@@ -1,6 +1,9 @@
 { lib, pkgs, ... }:
 
 {
+    imports = [
+      /etc/nixos/modules/desktop-environments/gnome.nix
+    ]
     boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
 
     boot.kernelParams = lib.mkAfter ([

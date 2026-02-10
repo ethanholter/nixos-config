@@ -21,6 +21,7 @@
       gnome-tweaks
       gnomeExtensions.caffeine
       gnomeExtensions.dash-to-dock
+      gnomeExtensions.blur-my-shell
       reversal-icon-theme
       bibata-cursors
     ]);

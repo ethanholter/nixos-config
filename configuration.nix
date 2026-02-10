@@ -40,6 +40,14 @@ in
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
 
+    services.pulseaudio.enable = false;
+    services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+    };
+
     # Users
     users.users.ethan = {
       isNormalUser = true;
@@ -75,13 +83,8 @@ in
       gh
       git
       efibootmgr
-      gnome-tweaks
-      gnomeExtensions.caffeine
-      gnomeExtensions.dash-to-dock
-      steam-devices-udev-rules
       htop
       inetutils
-      bibata-cursors
       lazygit
       libreoffice
       lshw
@@ -92,6 +95,7 @@ in
       teams-for-linux
       thunderbird
       tmux
+      gparted
       tree
       vim
       spotify

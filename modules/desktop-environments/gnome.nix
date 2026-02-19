@@ -24,6 +24,7 @@
       gnomeExtensions.blur-my-shell
       reversal-icon-theme
       bibata-cursors
+      dconf-editor
     ]);
 
     programs.dconf.profiles.user.databases = [
@@ -47,6 +48,10 @@
           };
           "org/gnome/desktop/notifications" = {
             show-in-lock-screen = false;
+          };
+          "org/gnome/desktop/background" = {
+            picture-uri = "file:///etc/nixos/assets/wallpapers/wallpaper0.png";
+            picture-uri-dark = "file:///etc/nixos/assets/wallpapers/wallpaper0.png";
           };
         };
       }

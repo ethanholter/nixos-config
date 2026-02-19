@@ -29,6 +29,22 @@ in
       home.stateVersion = "25.11";
     };
 
+    services.udev.packages = [
+    pkgs.platformio-core
+    pkgs.openocd
+  ];
+
+  services.avahi.enable = true;
+  services.resolved.enable = true;
+
+    programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      arduino-core-unwrapped.out
+      libgcc.lib
+    ];
+  };
+
     # Kernel
     # boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -52,7 +68,7 @@ in
     users.users.ethan = {
       isNormalUser = true;
       description = "Ethan Holter";
-      extraGroups = [ "networkmanager" "wheel" "docker" "nix" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "nix" "dialout"];
     };
 
     # Nix Packages
@@ -78,8 +94,10 @@ in
       brightnessctl
       dconf-editor
       dig
+      distrobox
       firefox
       fzf
+      platformio
       gh
       git
       efibootmgr
@@ -92,6 +110,8 @@ in
       os-prober
       pciutils
       python3
+      aircrack-ng
+      wireshark
       teams-for-linux
       thunderbird
       tmux

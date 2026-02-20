@@ -46,6 +46,7 @@
     nixpkgs.config.allowBroken = true;
 
     virtualisation.docker.enable = true;
+    virtualisation.virtualbox.host.enable = true;
     
     # flatpak
     services.flatpak.enable = true;

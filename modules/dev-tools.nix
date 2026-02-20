@@ -4,6 +4,8 @@
   environment.systemPackages = lib.mkAfter (with pkgs; [
       vscode
       platformio
+      avra
+      avrdude
       neovim
       distrobox
       lazygit

@@ -4,6 +4,7 @@
   environment.systemPackages = lib.mkAfter (with pkgs; [
       vscode
       platformio
+      putty
       avra
       avrdude
       neovim

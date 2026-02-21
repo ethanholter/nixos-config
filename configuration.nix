@@ -12,6 +12,11 @@
       pkgs.openocd
     ];
 
+    # https://github.com/NixOS/nixpkgs/issues/149812
+    environment.extraInit = ''
+	export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+	'';
+
     services.avahi.enable = true;
     services.resolved.enable = true;
 
@@ -26,6 +31,7 @@
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
 
+    programs.dconf.enable = true;
     services.pulseaudio.enable = false;
     services.pipewire = {
         enable = true;
@@ -74,6 +80,7 @@
       inetutils
       libreoffice
       lshw
+      gtk3
       os-prober
       pciutils
       spotify

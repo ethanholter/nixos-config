@@ -8,6 +8,7 @@
     /etc/nixos/modules/haxxing.nix
     /etc/nixos/modules/home-manager.nix
     /etc/nixos/modules/nix-ld.nix
+    /etc/nixos/modules/locale.nix
   ];
   boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
 

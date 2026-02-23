@@ -2,8 +2,9 @@
 {
     environment.systemPackages = lib.mkAfter (with pkgs; [
         wireshark
-        ghidra-bin
         imhex
         aircrack-ng
     ]);
+
+    programs.ghidra.enable = true;
 }

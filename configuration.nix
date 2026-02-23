@@ -72,20 +72,26 @@
       dig
       efibootmgr
       firefox
+      cargo
+      rustc
       fzf
       gh
       git
+      gdb
       gparted
       htop
+      gcc
       inetutils
       libreoffice
       lshw
       gtk3
       os-prober
       pciutils
+      wineWowPackages.stable
       spotify
       teams-for-linux
       thunderbird
+      toybox
       tree
       vim
       wget

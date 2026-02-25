@@ -50,8 +50,8 @@
             show-in-lock-screen = false;
           };
           "org/gnome/desktop/background" = {
-            picture-uri = "file:///etc/nixos/assets/wallpapers/wallpaper0.png";
-            picture-uri-dark = "file:///etc/nixos/assets/wallpapers/wallpaper0.png";
+            picture-uri = "file:///etc/nixos/assets/wallpapers/wallpaper1.png";
+            picture-uri-dark = "file:///etc/nixos/assets/wallpapers/wallpaper1.png";
           };
         };
       }

@@ -103,6 +103,7 @@
       brightnessctl
       dig
       efibootmgr
+      google-chrome
       firefox
       cargo
       rustc
@@ -112,8 +113,11 @@
       git
       gdb
       gparted
+      iverilog
       metasploit
       htop
+      quartus-prime-lite
+      drawio
       gcc
       inetutils
       libreoffice

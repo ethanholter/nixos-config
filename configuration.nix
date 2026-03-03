@@ -47,19 +47,12 @@
 	    alsa.support32Bit = true;
 	    pulse.enable = true;
 	    wireplumber.enable = true;
-	#     wireplumber.extraConfig."10-bluez"  = {
-	# 	"monitor.bluez.properties" = {
-	# 	    "bluez5.codecs" = [ "sbc" "sbc_xq" "aac" "lc3" ];
-	#
-	# 	};
-	#     };
-
 	};
 
 	# DNS
 	avahi.enable = true;
 	resolved.enable = true;
-
+	services.resolved.dnssec = "true";
     };
 
 
@@ -129,6 +122,7 @@
       wineWowPackages.stable
       spotify
       teams-for-linux
+      ripgrep
       thunderbird
       toybox
       nix-index

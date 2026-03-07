@@ -2,16 +2,29 @@
 
 {
   environment.systemPackages = lib.mkAfter (with pkgs; [
-      vscode
-      platformio
-      putty
+      autoconf 
+      automake 
       avra
       avrdude
-      neovim
+      cargo
+      dig
       distrobox
+      fzf
+      gcc
+      gdb
+      gh
+      git
+      gnumake
       lazygit
-      python3
+      libtool
+      neovim
       nmap
+      platformio
+      putty
+      python3
+      rustc
+      tmux
+      vscode
   ]);
 
 }

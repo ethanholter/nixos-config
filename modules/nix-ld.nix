@@ -3,31 +3,33 @@
     programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      arduino-core-unwrapped.out
-      krb5.lib
-      dbus.lib
-      nspr.out
-      nss.out
-      at-spi2-atk.out
-      cups.lib
-      cairo.out
-      gtk3.out
-      pango.out
       # libXdamage.out
       # libXext.out
       # libXfixes.out
       # libXrandr.out
-      kdePackages.wayland.out
-      libgbm.out
-      expat.out
-      libxcb.out
       alsa-lib.out
+      nss.out
+      arduino-core-unwrapped.out
+      at-spi2-atk.out
+      cairo.out
+      cups.lib
+      dbus.lib
+      expat.out
       fontconfig.lib
       freetype.out
       glib.out
+      gtk3.out
+      kdePackages.wayland.out
+      krb5.lib
       libGL.out
+      libgbm.out
       libgcc.lib
+      libtool.out
+      libxcb.out
       libxkbcommon.out
+      nspr.out
+      nss.out
+      pango.out
       xorg.libX11
     ];
   };

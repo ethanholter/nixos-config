@@ -2,6 +2,7 @@
 
 {
     imports = [
+    # /etc/nixos/modules/desktop-environments/hyprland.nix
     /etc/nixos/modules/desktop-environments/gnome.nix
     /etc/nixos/modules/dev-tools.nix
     /etc/nixos/modules/gaming.nix

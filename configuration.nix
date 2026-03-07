@@ -25,19 +25,21 @@
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
 
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.settings = {
-	General = {
-	    Experimental = true;
-	    ControllerMode="dual";
-	    KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
+    hardware.bluetooth = {
+	enable = true;
+	powerOnBoot = true;
+	settings = {
+	    General = {
+		Experimental = true;
+		ControllerMode="le";
+		KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
+	    };
 	};
     };
 
     services = {
 	udev.packages = [
 	  pkgs.platformio-core
-	  pkgs.openocd
 	];
 
 	pulseaudio.enable = false;
@@ -56,11 +58,13 @@
     };
 
 
+    nix.settings.allowed-users = [ "ethan" ];
+
     # Users
     users.users.ethan = {
       isNormalUser = true;
       description = "Ethan Holter";
-      extraGroups = [ "networkmanager" "wheel" "docker" "nix" "dialout" "plugdev"];
+      extraGroups = [ "networkmanager" "wheel" "docker" "nix" "dialout" "wireshark"];
     };
 
     # Nix Packages
@@ -77,6 +81,7 @@
     services.flatpak.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     xdg.portal.config.common.default = "gtk";
+    xdg.portal.xdgOpenUsePortal = true;
     systemd.services.flatpak-repo = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];
@@ -108,6 +113,13 @@
       gparted
       iverilog
       metasploit
+      brightnessctl
+      ripgrep
+      efibootmgr
+      home-manager
+      firefox
+      gparted
+      liblc3
       htop
       quartus-prime-lite
       drawio
@@ -115,6 +127,7 @@
       inetutils
       libreoffice
       lshw
+      sticky
       gtk3
       pavucontrol
       os-prober
@@ -123,12 +136,14 @@
       spotify
       teams-for-linux
       ripgrep
+      chromium
       thunderbird
       toybox
+      claude-code
       nix-index
       tree
-      vim
       wget
+      vim
       xclip
     ]);
 

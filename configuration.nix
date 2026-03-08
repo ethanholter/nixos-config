@@ -54,7 +54,7 @@
 	# DNS
 	avahi.enable = true;
 	resolved.enable = true;
-	services.resolved.dnssec = "true";
+	#services.resolved.dnssec = "true";
     };
 
 
@@ -99,17 +99,19 @@
     # Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
       brightnessctl
-      dig
-      efibootmgr
-      google-chrome
-      firefox
       cargo
-      rustc
+      coreutils-full
+      dig
+      progress
+      drawio
+      efibootmgr
+      firefox
       fzf
-      tmux
+      gcc
+      gdb
       gh
       git
-      gdb
+      google-chrome
       gparted
       iverilog
       metasploit
@@ -120,19 +122,23 @@
       firefox
       gparted
       liblc3
+      gtk3
       htop
-      quartus-prime-lite
-      drawio
-      gcc
       inetutils
+      iverilog
       libreoffice
       lshw
       sticky
       gtk3
       pavucontrol
+      metasploit
+      nix-index
       os-prober
+      pavucontrol
       pciutils
-      wineWowPackages.stable
+      quartus-prime-lite
+      ripgrep
+      rustc
       spotify
       teams-for-linux
       ripgrep
@@ -141,9 +147,12 @@
       toybox
       claude-code
       nix-index
+      thunderbird
+      tmux
       tree
       wget
       vim
+      wineWowPackages.stable
       xclip
     ]);
 

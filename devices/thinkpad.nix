@@ -6,7 +6,6 @@
     /etc/nixos/modules/dev-tools.nix
     /etc/nixos/modules/gaming.nix
     /etc/nixos/modules/haxxing.nix
-    /etc/nixos/modules/home-manager.nix
     /etc/nixos/modules/nix-ld.nix
     /etc/nixos/modules/locale.nix
   ];

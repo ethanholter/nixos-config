@@ -14,9 +14,12 @@
 	'';
 
 
+    
     # Kernel
-    # boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+    # https://github.com/nixos/nixpkgs/issues/h89947
+    boot.kernelPackages = pkgs.linuxPackages_6_18;
+    #boot.kernelPackages = pkgs.linuxPackages_latest;
+    #boot.kernelPackages = pkgs.linuxPackages_zen;
 
     # Networking
     networking.hostName = "nixos";
@@ -31,11 +34,18 @@
 	settings = {
 	    General = {
 		Experimental = true;
-		ControllerMode="le";
+		ControllerMode="dual";
 		KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
 	    };
 	};
     };
+    #
+    # nix = {
+    #   package = pkgs.nixFlakes;
+    #   extraOptions = ''
+    #     experimental-features = nix-command flakes'';
+    # };
+
 
     services = {
 	udev.packages = [
@@ -112,6 +122,9 @@
       gh
       git
       google-chrome
+      gdb
+      obsidian
+      steam-run
       gparted
       iverilog
       metasploit
@@ -124,6 +137,8 @@
       liblc3
       gtk3
       htop
+      drawio
+      gcc
       inetutils
       iverilog
       libreoffice

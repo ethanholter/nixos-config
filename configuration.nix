@@ -13,14 +13,6 @@
 	export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
 	'';
 
-
-    
-    # Kernel
-    # https://github.com/nixos/nixpkgs/issues/h89947
-    boot.kernelPackages = pkgs.linuxPackages_6_18;
-    #boot.kernelPackages = pkgs.linuxPackages_latest;
-    #boot.kernelPackages = pkgs.linuxPackages_zen;
-
     # Networking
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;

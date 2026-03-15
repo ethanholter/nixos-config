@@ -11,6 +11,8 @@
   ];
   boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.wg-quick.interfaces = {
     wg0 = {

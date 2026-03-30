@@ -2,26 +2,27 @@
 
 {
     imports = [
-    # /etc/nixos/modules/desktop-environments/hyprland.nix
-    /etc/nixos/modules/desktop-environments/gnome.nix
-    /etc/nixos/modules/dev-tools.nix
-    /etc/nixos/modules/gaming.nix
-    /etc/nixos/modules/haxxing.nix
-    /etc/nixos/modules/home-manager.nix
-    /etc/nixos/modules/nix-ld.nix
-    /etc/nixos/modules/locale.nix
-];
+	# /etc/nixos/modules/desktop-environments/hyprland.nix
+	/etc/nixos/modules/desktop-environments/gnome.nix
+	/etc/nixos/modules/dev-tools.nix
+	/etc/nixos/modules/gaming.nix
+	/etc/nixos/modules/haxxing.nix
+	/etc/nixos/modules/home-manager.nix
+	/etc/nixos/modules/locale.nix
+	/etc/nixos/modules/nix-ld.nix
+	/etc/nixos/modules/wireguard.nix
+    ];
     boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
 
 # Device Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
-            discord
-            distrobox
-            docker
-            prismlauncher
-            neofetch
-            qemu
-            os-prober
+	    discord
+	    distrobox
+	    docker
+	    prismlauncher
+	    neofetch
+	    qemu
+	    os-prober
     ]);
 
 # https://discourse.nixos.org/t/gnome-gdm-glitches-after-suspending-sleep/52410/26

@@ -118,6 +118,7 @@
       obsidian
       steam-run
       gparted
+      ffmpeg
       iverilog
       metasploit
       brightnessctl

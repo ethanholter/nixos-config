@@ -1,3 +1,4 @@
 hardware-configuration.nix
 device-configuration.nix
 result
+secret

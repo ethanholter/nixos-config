@@ -7,6 +7,11 @@
       ./device-configuration.nix
     ];
 
+    boot.kernel.sysctl = {
+      "net.core.default_qdisc" = "fq"; # Required for BBR
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
+
 
     # https://github.com/NixOS/nixpkgs/issues/149812
     environment.extraInit = ''
@@ -19,6 +24,11 @@
 
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
+
+    networking.hosts = {
+      "142.204.162.111" = [ "eholter.com" ];
+    };
+
 
     hardware.bluetooth = {
 	enable = true;
@@ -59,6 +69,7 @@
 	#services.resolved.dnssec = "true";
     };
 
+    services.fwupd.enable = true;
 
     nix.settings.allowed-users = [ "ethan" ];
 
@@ -77,7 +88,7 @@
     programs.npm.enable = true;
 
     virtualisation.docker.enable = true;
-    virtualisation.virtualbox.host.enable = true;
+    # virtualisation.virtualbox.host.enable = true;
     
     # flatpak
     services.flatpak.enable = true;
@@ -101,20 +112,13 @@
     # Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
       brightnessctl
-      cargo
       coreutils-full
-      dig
       progress
       drawio
       efibootmgr
       firefox
       fzf
-      gcc
-      gdb
-      gh
-      git
       google-chrome
-      gdb
       obsidian
       steam-run
       gparted
@@ -122,16 +126,16 @@
       iverilog
       metasploit
       brightnessctl
+      arduino-ide
+      fwupd
       ripgrep
       efibootmgr
       home-manager
       firefox
-      gparted
       liblc3
       gtk3
       htop
       drawio
-      gcc
       inetutils
       iverilog
       libreoffice
@@ -144,7 +148,6 @@
       os-prober
       pavucontrol
       pciutils
-      quartus-prime-lite
       ripgrep
       rustc
       spotify
@@ -152,8 +155,6 @@
       ripgrep
       chromium
       thunderbird
-      toybox
-      claude-code
       nix-index
       thunderbird
       tmux

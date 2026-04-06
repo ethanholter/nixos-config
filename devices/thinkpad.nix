@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 {
   imports = [
@@ -8,28 +8,15 @@
     /etc/nixos/modules/haxxing.nix
     /etc/nixos/modules/nix-ld.nix
     /etc/nixos/modules/locale.nix
+    /etc/nixos/modules/wireguard.nix
   ];
+
   boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # linuxPackages_6_16
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      address = [ "10.1.1.7" ];
-      dns = [ "10.1.1.2" ];
-      privateKeyFile = "/etc/wireguard/privatekey";
-      peers = [
-        {
-          publicKey = "+y4BV3PpVHumAVRWJ+OFvugdytsKWhVDlgAI8ztG7nw=";
-          allowedIPs = [ "10.1.1.0/24" ];
-          endpoint = "170.9.235.19:51820";
-        }
-      ];
-    };
-  };
-
-
     # Device Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
       discord

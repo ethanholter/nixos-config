@@ -13,6 +13,7 @@
 	/etc/nixos/modules/wireguard.nix
     ];
     boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
 # Device Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [

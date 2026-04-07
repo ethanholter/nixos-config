@@ -11,6 +11,7 @@
   environment.systemPackages = lib.mkAfter (with pkgs; [
     steam-devices-udev-rules
     prismlauncher
+    ckan # Kerbal Space Program mod manager
   ]);
 }
 

@@ -25,35 +25,49 @@
       reversal-icon-theme
       bibata-cursors
       dconf-editor
+      wmctrl
     ]);
 
     programs.dconf.profiles.user.databases = [
-      {
-        lockAll = true; # prevents overriding
-        settings = {
-          "org/gnome/desktop/wm/preferences" = {
-            button-layout = ":minimize,maximize,close";
-          };
-          "org/gnome/desktop/interface/clock-format" = {
-            clock-format = "12h";
-          };
-          "org/gnome/desktop/interface" = {
-            icon-theme = "Reversal";
-          };
-          "org/gnome/desktop/interface" = {
-            cursor-theme = "Bibata-Modern-Ice";
-          };
-          "org/gnome/desktop/interface" = {
-            enable-hot-corners = false;
-          };
-          "org/gnome/desktop/notifications" = {
-            show-in-lock-screen = false;
-          };
-          "org/gnome/desktop/background" = {
-            picture-uri = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
-            picture-uri-dark = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
-          };
-        };
-      }
+    {
+	lockAll = true; # prevents overriding
+	    settings = {
+		"org/gnome/desktop/wm/preferences" = {
+		    button-layout = ":minimize,maximize,close";
+		};
+		"org/gnome/desktop/interface/clock-format" = {
+		    clock-format = "12h";
+		};
+		"org/gnome/desktop/interface" = {
+		    icon-theme = "Reversal";
+		};
+		"org/gnome/desktop/interface" = {
+		    cursor-theme = "Bibata-Modern-Ice";
+		};
+		"org/gnome/desktop/interface" = {
+		    enable-hot-corners = false;
+		};
+		"org/gnome/desktop/notifications" = {
+		    show-in-lock-screen = false;
+		};
+		"org/gnome/desktop/background" = {
+		    picture-uri = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
+		    picture-uri-dark = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
+		};
+		"org/gnome/settings-daemon/plugins/media-keys" = {
+		    custom-keybindings = [
+			"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+		    ];
+		};
+
+		# ============= Key bindings ============
+
+		"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+		    name = "Focus or Open Spotify";
+		    command = "bash -c 'wmctrl -xa spotify.Spotify || spotify'";
+		    binding = "<Shift><Super>s";
+		};
+	    };
+    }
     ];
 }

@@ -77,7 +77,7 @@
     users.users.ethan = {
       isNormalUser = true;
       description = "Ethan Holter";
-      extraGroups = [ "networkmanager" "wheel" "docker" "nix" "dialout" "wireshark"];
+      extraGroups = [ "networkmanager" "wheel" "docker" "nix" "dialout" "wireshark" "input"];
     };
 
     # Nix Packages

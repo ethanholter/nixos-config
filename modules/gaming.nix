@@ -5,7 +5,9 @@
     enable = true;
     extraPackages = with pkgs; [            
         bibata-cursors
+	extest
       ];
+    extest.enable = true; # prevents "allow remote interaction" popup
   };
   
   environment.systemPackages = lib.mkAfter (with pkgs; [

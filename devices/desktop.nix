@@ -2,15 +2,15 @@
 
 {
     imports = [
-	# /etc/nixos/modules/desktop-environments/hyprland.nix
-	/etc/nixos/modules/desktop-environments/gnome.nix
-	/etc/nixos/modules/dev-tools.nix
-	/etc/nixos/modules/gaming.nix
-	/etc/nixos/modules/haxxing.nix
-	/etc/nixos/modules/home-manager.nix
-	/etc/nixos/modules/locale.nix
-	/etc/nixos/modules/nix-ld.nix
-	/etc/nixos/modules/wireguard.nix
+	# ../modules/desktop-environments/hyprland.nix
+	../modules/desktop-environments/gnome.nix
+	../modules/dev-tools.nix
+	../modules/gaming.nix
+	../modules/haxxing.nix
+	../modules/home-manager.nix
+	../modules/locale.nix
+	../modules/nix-ld.nix
+	../modules/wireguard.nix
     ];
     boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
     boot.kernelPackages = pkgs.linuxPackages_zen;

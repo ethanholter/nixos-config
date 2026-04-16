@@ -1,12 +1,15 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ <home-manager/nixos> ];
-  
-      # home manager
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
+
+  # home manager
   home-manager.users.ethan = { pkgs, ... }: {
-      home.file.".local/share/icons/hicolor/256x256/apps/claude.png".source = /etc/nixos/assets/icons/claude.png;
       home.packages = [ ];
+      home.file.".local/share/icons/hicolor/256x256/apps/claude.png".source = /etc/nixos/assets/icons/claude.png;
       # custom desktop entries
       xdg.desktopEntries = {
         nix-packages = {
@@ -16,6 +19,7 @@
           terminal = false;
           icon = "nix-software-center";
         };
+
         claude = {
           name = "Claude";
           genericName = "LLM";

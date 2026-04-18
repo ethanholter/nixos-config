@@ -13,6 +13,8 @@
 	../modules/nix-ld.nix
 	../modules/wireguard.nix
     ];
+    networking.hostName = "desktop";
+
     boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
     boot.kernelPackages = pkgs.linuxPackages_zen;
 

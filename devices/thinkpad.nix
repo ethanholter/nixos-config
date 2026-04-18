@@ -13,6 +13,8 @@
     ../modules/wireguard.nix
   ];
 
+  networking.hostName = "thinkpad";
+
   boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
 
 

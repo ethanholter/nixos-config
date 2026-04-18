@@ -16,7 +16,6 @@
 	'';
 
     # Networking
-    networking.hostName = "nixos";
     networking.networkmanager.enable = true;
 
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
@@ -39,6 +38,13 @@
 	};
     };
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    nix.gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+    nix.optimise.automatic = true;
 
 
     services = {

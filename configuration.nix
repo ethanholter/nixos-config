@@ -1,10 +1,8 @@
 { lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+  ];
 
     boot.kernel.sysctl = {
       "net.core.default_qdisc" = "fq"; # Required for BBR

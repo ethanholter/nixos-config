@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hardware-thinkpad.nix
     ../modules/desktop-environments/gnome.nix
     ../modules/dev-tools.nix
     ../modules/gaming.nix

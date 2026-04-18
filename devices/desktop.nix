@@ -2,6 +2,7 @@
 
 {
     imports = [
+	./hardware-desktop.nix
 	# ../modules/desktop-environments/hyprland.nix
 	../modules/desktop-environments/gnome.nix
 	../modules/dev-tools.nix

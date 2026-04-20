@@ -9,6 +9,13 @@
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
 
+    xdg.mime.defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
 
     # https://github.com/NixOS/nixpkgs/issues/149812
     environment.extraInit = ''

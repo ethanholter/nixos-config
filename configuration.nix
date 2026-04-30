@@ -67,6 +67,19 @@
 	    pulse.enable = true;
 	    wireplumber.enable = true;
 	};
+        keyd = {
+            enable = true;
+            keyboards = {
+                default = {
+                    ids = ["*"];
+                    settings = {
+                        main = {
+                            capslock = "noop"; # Disables it
+                        };
+                    };
+                };
+            };
+        };
 
 	# DNS
 	avahi.enable = true;
@@ -124,7 +137,7 @@
       firefox
       fzf
       google-chrome
-      obsidian
+      obsidian 
       steam-run
       gparted
       ffmpeg
@@ -169,6 +182,7 @@
       wineWowPackages.stable
       xclip
     ]);
+    # obsidian.override { electron = pkgs.electron_39; }# https://github.com/NixOS/nixpkgs/issues/505078#issuecomment-4169858220
 
     # Fonts
     fonts.packages = with pkgs; [

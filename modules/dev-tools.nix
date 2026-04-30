@@ -24,6 +24,7 @@
       logisim-evolution
       neovim
       nmap
+      gtkwave
       platformio
       putty
       python3

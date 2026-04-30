@@ -11,6 +11,7 @@
     ../modules/nix-ld.nix
     ../modules/locale.nix
     ../modules/wireguard.nix
+    ../modules/nixos-hydrolab.nix
   ];
 
   networking.hostName = "thinkpad";

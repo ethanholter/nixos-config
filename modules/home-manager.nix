@@ -7,7 +7,7 @@
   };
 
   # home manager
-  home-manager.users.ethan = { pkgs, ... }: {
+  home-manager.users.ethan = { pkgs, lib, ... }: {
       home.packages = [ ];
       home.file.".local/share/icons/hicolor/256x256/apps/claude.png".source = ../assets/icons/claude.png;
       # custom desktop entries
@@ -27,11 +27,18 @@
           terminal = false;
           icon = "claude";
 	  settings = {
-	      StartupWMClass="claude";
+	      StartupWMClass="chrome-claude.ai__-Default";
 	  };
         };
       };
 
+      home.file.".config/distrobox/distrobox.ini".text = ''
+          [ubuntu-24]
+          image=ubuntu:24.04
+          pull=true
+          init=true
+          home=/home/ubuntu
+     '';
       home.stateVersion = "25.11";
     };
 }

@@ -28,7 +28,6 @@
       libxcb.out
       libxkbcommon.out
       nspr.out
-      nss.out
       pango.out
       xorg.libX11
     ];

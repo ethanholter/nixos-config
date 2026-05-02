@@ -17,6 +17,17 @@
       "x-scheme-handler/unknown" = "firefox.desktop";
     };
 
+    boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
+
+    boot.loader = {
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
+      grub.efiSupport = true;
+      grub.enable = true;
+      grub.device = "nodev";
+      grub.useOSProber = true;
+    };
+
     # https://github.com/NixOS/nixpkgs/issues/149812
     environment.extraInit = ''
 	export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
@@ -32,7 +43,6 @@
       "142.204.162.111" = [ "eholter.com" ];
     };
 
-
     hardware.bluetooth = {
 	enable = true;
 	powerOnBoot = true;
@@ -44,7 +54,9 @@
 	    };
 	};
     };
+
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.allowed-users = [ "ethan" ];
 
     nix.gc = {
       automatic = true;
@@ -52,7 +64,6 @@
       options = "--delete-older-than 14d";
     };
     nix.optimise.automatic = true;
-
 
     services = {
 	udev.packages = [
@@ -65,7 +76,32 @@
 	    alsa.enable = true;
 	    alsa.support32Bit = true;
 	    pulse.enable = true;
-	    wireplumber.enable = true;
+	    wireplumber = {
+	      enable = true;
+	      # To discover node names for renaming:
+	      #   wpctl status                    (lists devices with their numeric IDs)
+	      #   wpctl inspect <id> | grep node  (shows node.name, node.description, node.nick)
+	      extraConfig = {
+	        "rename-nodes" = {
+	          "monitor.alsa.rules" = [
+	            {
+	              matches = [{ "node.name" = "alsa_output.pci-0000_0a_00.4.analog-stereo"; }];
+	              actions."update-props" = {
+	                "node.description" = "Speakers";
+	                "node.nick" = "Speakers";
+	              };
+	            }
+	            {
+	              matches = [{ "node.name" = "alsa_input.pci-0000_0a_00.4.analog-stereo"; }];
+	              actions."update-props" = {
+	                "node.description" = "Speakers (Mic In)";
+	                "node.nick" = "Speakers (Mic In)";
+	              };
+	            }
+	          ];
+	        };
+	      };
+	    };
 	};
         keyd = {
             enable = true;
@@ -84,12 +120,9 @@
 	# DNS
 	avahi.enable = true;
 	resolved.enable = true;
-	#services.resolved.dnssec = "true";
     };
 
     services.fwupd.enable = true;
-
-    nix.settings.allowed-users = [ "ethan" ];
 
     # Users
     users.users.ethan = {
@@ -106,8 +139,7 @@
     programs.npm.enable = true;
 
     virtualisation.docker.enable = true;
-    # virtualisation.virtualbox.host.enable = true;
-    
+
     # flatpak
     services.flatpak.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -126,59 +158,46 @@
       source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
     '';
 
-
     # Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
-      brightnessctl
-      coreutils-full
-      progress
-      drawio
-      efibootmgr
-      firefox
-      fzf
-      google-chrome
-      obsidian 
-      steam-run
-      gparted
-      ffmpeg
-      iverilog
-      metasploit
-      brightnessctl
       arduino-ide
-      fwupd
-      ripgrep
-      efibootmgr
-      home-manager
-      firefox
-      liblc3
-      gtk3
-      htop
+      brightnessctl
+      chromium
+      coreutils-full
+      discord
       drawio
+      efibootmgr
+      ffmpeg
+      firefox
+      fwupd
+      google-chrome
+      gparted
+      gtk3
+      home-manager
+      htop
       inetutils
       iverilog
+      liblc3
       libreoffice
       lshw
-      sticky
-      gtk3
-      pavucontrol
       metasploit
+      neofetch
       nix-index
+      obsidian
       os-prober
       pavucontrol
       pciutils
+      progress
+      qemu
       ripgrep
-      rustc
       spotify
+      steam-run
+      sticky
       teams-for-linux
-      ripgrep
-      chromium
       thunderbird
-      nix-index
-      thunderbird
-      tmux
       tree
-      wget
       vim
+      wget
       wineWowPackages.stable
       xclip
     ]);

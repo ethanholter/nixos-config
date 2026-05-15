@@ -1,8 +1,8 @@
 <div align="center">
 
-# ❄️ nixos-config
+# nixos-config
 
-**Ethan's personal NixOS configuration**
+**My personal NixOS configuration**
 
 [![NixOS](https://img.shields.io/badge/NixOS-25.11-5277C3?style=for-the-badge&logo=nixos&logoColor=white)](https://nixos.org)
 [![Flakes](https://img.shields.io/badge/Nix-Flakes-blue?style=for-the-badge&logo=nixos&logoColor=white)](https://nixos.wiki/wiki/Flakes)
@@ -12,16 +12,16 @@
 
 ---
 
-## 🖥️ Hosts
+## Hosts
 
-| Host | Device | Kernel | DE | GPU |
-|------|--------|--------|----|-----|
-| `desktop` | Desktop PC | linux-zen | GNOME | NVIDIA (open) |
-| `thinkpad` | ThinkPad | linux 6.18 | GNOME | — |
+| Host       | Device     | Kernel     | DE    | GPU           |
+|------------|------------|------------|-------|---------------|
+| `desktop`  | Desktop PC | linux-zen  | GNOME | NVIDIA (open) |
+| `thinkpad` | ThinkPad   | linux 6.18 | GNOME | —             |
 
 ---
 
-## 📁 Structure
+## Structure
 
 ```
 .
@@ -45,7 +45,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 - **Modular** — shared config with per-device overrides
 - **Flakes** — reproducible, pinned inputs
@@ -57,23 +57,19 @@
 
 ---
 
-## 🚀 Deploying
-
-Switch the active device symlink then rebuild:
+## Deploying
 
 ```bash
 # Desktop
-ln -sf devices/desktop.nix device-configuration.nix
 sudo nixos-rebuild switch --flake .#desktop
 
 # ThinkPad
-ln -sf devices/thinkpad.nix device-configuration.nix
 sudo nixos-rebuild switch --flake .#thinkpad
 ```
 
 ---
 
-## 📦 Notable Packages
+## Notable Packages
 
 | Category | Packages |
 |----------|----------|
@@ -85,14 +81,8 @@ sudo nixos-rebuild switch --flake .#thinkpad
 
 ---
 
-## ✅ Todo
+## Todo
 
 - [ ] Migrate ThinkPad to [`nixos-hardware`](https://github.com/NixOS/nixos-hardware) for tuned power management, suspend fixes, and hardware-specific optimizations
 - [ ] Switch Docker to rootless mode or migrate to Podman
 - [ ] Manage dotfiles (shell, git, neovim) via Home Manager
-
----
-
-<div align="center">
-<sub>Built with ❄️ and too much time on Stack Overflow</sub>
-</div>

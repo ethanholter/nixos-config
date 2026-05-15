@@ -81,29 +81,6 @@ networking.firewall.interfaces.enp1s0 = {
 	    pulse.enable = true;
 	    wireplumber = {
 	      enable = true;
-	      # To discover node names for renaming:
-	      #   wpctl status                    (lists devices with their numeric IDs)
-	      #   wpctl inspect <id> | grep node  (shows node.name, node.description, node.nick)
-	      extraConfig = {
-	        "rename-nodes" = {
-	          "monitor.alsa.rules" = [
-	            {
-	              matches = [{ "node.name" = "alsa_output.pci-0000_0a_00.4.analog-stereo"; }];
-	              actions."update-props" = {
-	                "node.description" = "Speakers";
-	                "node.nick" = "Speakers";
-	              };
-	            }
-	            {
-	              matches = [{ "node.name" = "alsa_input.pci-0000_0a_00.4.analog-stereo"; }];
-	              actions."update-props" = {
-	                "node.description" = "Speakers (Mic In)";
-	                "node.nick" = "Speakers (Mic In)";
-	              };
-	            }
-	          ];
-	        };
-	      };
 	    };
 	};
         keyd = {
@@ -171,6 +148,7 @@ networking.firewall.interfaces.enp1s0 = {
       discord
       drawio
       unstable.rpi-imager
+      gnome-frog
       efibootmgr
       ffmpeg
       firefox

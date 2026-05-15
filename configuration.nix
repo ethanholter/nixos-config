@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, unstable, ... }:
 
 {
   imports = [
@@ -54,7 +54,6 @@
 	    };
 	};
     };
-
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     nix.settings.allowed-users = [ "ethan" ];
 
@@ -65,6 +64,10 @@
     };
     nix.optimise.automatic = true;
 
+networking.firewall.interfaces.enp1s0 = {
+  allowedUDPPorts = [ 67 53 ];
+  allowedTCPPorts = [ 53 ];
+};
     services = {
 	udev.packages = [
 	  pkgs.platformio-core
@@ -119,6 +122,7 @@
 
 	# DNS
 	avahi.enable = true;
+        avahi.nssmdns4 = true;
 	resolved.enable = true;
     };
 
@@ -166,9 +170,11 @@
       coreutils-full
       discord
       drawio
+      unstable.rpi-imager
       efibootmgr
       ffmpeg
       firefox
+      dnsmasq
       fwupd
       google-chrome
       gparted
@@ -181,13 +187,14 @@
       libreoffice
       lshw
       metasploit
-      neofetch
+      fastfetch
       nix-index
       obsidian
       os-prober
       pavucontrol
       pciutils
       progress
+      tor-browser
       qemu
       ripgrep
       spotify

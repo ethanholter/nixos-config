@@ -1,9 +1,6 @@
 { lib, pkgs, unstable, ... }:
 
 {
-  imports = [
-  ];
-
     boot.kernel.sysctl = {
       "net.core.default_qdisc" = "fq"; # Required for BBR
       "net.ipv4.tcp_congestion_control" = "bbr";

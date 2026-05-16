@@ -2,16 +2,6 @@
 
 {
     imports = [
-	./hardware-desktop.nix
-	# ../modules/desktop-environments/hyprland.nix
-	../modules/desktop-environments/gnome.nix
-	../modules/dev-tools.nix
-	../modules/gaming.nix
-	../modules/haxxing.nix
-	../modules/home-manager.nix
-	../modules/locale.nix
-	../modules/nix-ld.nix
-	../modules/wireguard.nix
     ];
     networking.hostName = "desktop";
 

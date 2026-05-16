@@ -2,16 +2,6 @@
 
 {
   imports = [
-    ./hardware-thinkpad.nix
-    ../modules/desktop-environments/gnome.nix
-    ../modules/dev-tools.nix
-    ../modules/gaming.nix
-    ../modules/haxxing.nix
-    ../modules/home-manager.nix
-    ../modules/nix-ld.nix
-    ../modules/locale.nix
-    ../modules/wireguard.nix
-    ../modules/nixos-hydrolab.nix
   ];
 
   networking.hostName = "thinkpad";

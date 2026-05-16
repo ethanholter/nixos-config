@@ -6,7 +6,6 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     odrive-udev.url = "github:ethanholter/odrive-udev";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -20,8 +19,17 @@
         specialArgs = { inherit unstable; };
         modules = [
           ./configuration.nix
+	  ./devices/hardware-desktop.nix
           ./devices/desktop.nix
-          # TODO put module imports here instead of desktop.nix
+	  ./modules/desktop-environments/gnome.nix
+	  ./modules/dev-tools.nix
+	  ./modules/gaming.nix
+	  ./modules/haxxing.nix
+	  ./modules/home-manager.nix
+	  ./modules/locale.nix
+	  ./modules/nix-ld.nix
+	  ./modules/wireguard.nix
+
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default
         ];
@@ -33,7 +41,17 @@
         modules = [
           ./configuration.nix
           ./devices/thinkpad.nix
-          # TODO put module imports here instead of thinkpad.nix
+          ./devices/hardware-thinkpad.nix
+          ./modules/desktop-environments/gnome.nix
+          ./modules/dev-tools.nix
+          ./modules/gaming.nix
+          ./modules/haxxing.nix
+          ./modules/home-manager.nix
+          ./modules/nix-ld.nix
+          ./modules/locale.nix
+          ./modules/wireguard.nix
+          ./modules/nixos-hydrolab.nix
+
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default
         ];

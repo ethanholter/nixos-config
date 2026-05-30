@@ -36,10 +36,6 @@
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
 
-    networking.hosts = {
-      "142.204.162.111" = [ "eholter.com" ];
-    };
-
     hardware.bluetooth = {
 	enable = true;
 	powerOnBoot = true;

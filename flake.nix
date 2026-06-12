@@ -2,8 +2,8 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     odrive-udev.url = "github:ethanholter/odrive-udev";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +29,7 @@
 	  ./modules/locale.nix
 	  ./modules/nix-ld.nix
 	  ./modules/wireguard.nix
+          ./modules/networking.nix
 
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default
@@ -51,6 +52,7 @@
           ./modules/locale.nix
           ./modules/wireguard.nix
           ./modules/nixos-hydrolab.nix
+          ./modules/networking.nix
 
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default

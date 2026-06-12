@@ -3,10 +3,6 @@
     programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      # libXdamage.out
-      # libXext.out
-      # libXfixes.out
-      # libXrandr.out
       alsa-lib.out
       nss.out
       arduino-core-unwrapped.out
@@ -29,7 +25,7 @@
       libxkbcommon.out
       nspr.out
       pango.out
-      xorg.libX11
+      libX11
     ];
   };
 

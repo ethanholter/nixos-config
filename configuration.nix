@@ -30,8 +30,6 @@
 	export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
 	'';
 
-    # Networking
-    networking.networkmanager.enable = true;
 
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
@@ -57,10 +55,6 @@
     };
     nix.optimise.automatic = true;
 
-networking.firewall.interfaces.enp1s0 = {
-  allowedUDPPorts = [ 67 53 ];
-  allowedTCPPorts = [ 53 ];
-};
     services = {
 	udev.packages = [
 	  pkgs.platformio-core
@@ -90,10 +84,6 @@ networking.firewall.interfaces.enp1s0 = {
             };
         };
 
-	# DNS
-	avahi.enable = true;
-        avahi.nssmdns4 = true;
-	resolved.enable = true;
     };
 
     services.fwupd.enable = true;
@@ -147,6 +137,7 @@ networking.firewall.interfaces.enp1s0 = {
       firefox
       dnsmasq
       fwupd
+      zoxide
       google-chrome
       gparted
       gtk3
@@ -176,10 +167,9 @@ networking.firewall.interfaces.enp1s0 = {
       tree
       vim
       wget
-      wineWowPackages.stable
+      wineWow64Packages.stable
       xclip
     ]);
-    # obsidian.override { electron = pkgs.electron_39; }# https://github.com/NixOS/nixpkgs/issues/505078#issuecomment-4169858220
 
     # Fonts
     fonts.packages = with pkgs; [

@@ -1,6 +1,6 @@
 <div align="center">
 
-# nixos-config
+# Ethan's NixOS Config
 
 **My personal NixOS configuration**
 

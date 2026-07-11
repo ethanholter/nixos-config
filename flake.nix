@@ -18,18 +18,21 @@
         system = "x86_64-linux";
         specialArgs = { inherit unstable; };
         modules = [
-          ./configuration.nix
-	  ./devices/hardware-desktop.nix
-          ./devices/desktop.nix
-	  ./modules/desktop-environments/gnome.nix
-	  ./modules/dev-tools.nix
-	  ./modules/gaming.nix
-	  ./modules/haxxing.nix
-	  ./modules/home-manager.nix
-	  ./modules/locale.nix
-	  ./modules/nix-ld.nix
-	  ./modules/wireguard.nix
-          ./modules/networking.nix
+            ./configuration.nix
+            ./devices/desktop.nix
+            ./devices/hardware-desktop.nix
+            ./modules/bootloader.nix
+            ./modules/desktop-environments/gnome.nix
+            ./modules/dev-tools.nix
+            ./modules/fonts.nix
+            ./modules/gaming.nix
+            ./modules/haxxing.nix
+            ./modules/home-manager.nix
+            ./modules/locale.nix
+            ./modules/networking.nix
+            ./modules/nix-ld.nix
+            ./modules/wireguard.nix
+
 
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default
@@ -41,18 +44,20 @@
         specialArgs = { inherit unstable; };
         modules = [
           ./configuration.nix
-          ./devices/thinkpad.nix
           ./devices/hardware-thinkpad.nix
+          ./devices/thinkpad.nix
+          ./modules/bootloader.nix
           ./modules/desktop-environments/gnome.nix
           ./modules/dev-tools.nix
+          ./modules/fonts.nix
           ./modules/gaming.nix
           ./modules/haxxing.nix
           ./modules/home-manager.nix
-          ./modules/nix-ld.nix
           ./modules/locale.nix
-          ./modules/wireguard.nix
-          ./modules/nixos-hydrolab.nix
           ./modules/networking.nix
+          ./modules/nix-ld.nix
+          ./modules/nixos-hydrolab.nix
+          ./modules/wireguard.nix
 
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default

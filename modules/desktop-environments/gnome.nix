@@ -28,6 +28,12 @@
       wmctrl
     ]);
 
+    # https://github.com/NixOS/nixpkgs/issues/149812
+    environment.extraInit = ''
+        export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+    '';
+
+
     # https://wiki.nixos.org/wiki/Steam - fix steam game icons
     home-manager.users.ethan = {lib, ... }: {
         home.activation.fixSteamIcons = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

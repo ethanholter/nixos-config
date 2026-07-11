@@ -1,5 +1,4 @@
 { pkgs, lib, ... }:
-
 {
   environment.systemPackages = lib.mkAfter (with pkgs; [
       acpica-tools
@@ -35,7 +34,6 @@
       vscode
       vscode.fhs
       (pkgs.python3.withPackages (ps: with ps; [
-	  matplotlib
 	  pyqt5
       ]))
       pkgs.qt5.qtwayland

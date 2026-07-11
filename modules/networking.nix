@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, lib, ... }: 
 {
     networking.networkmanager.enable = true;
 
@@ -16,4 +16,9 @@
     environment.systemPackages = lib.mkAfter (with pkgs; [
         dnsmasq
     ]);
+
+    boot.kernel.sysctl = {
+      "net.core.default_qdisc" = "fq"; # Required for BBR
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
 }

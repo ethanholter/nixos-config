@@ -1,11 +1,6 @@
 { lib, pkgs, unstable, ... }:
 
 {
-    boot.kernel.sysctl = {
-      "net.core.default_qdisc" = "fq"; # Required for BBR
-      "net.ipv4.tcp_congestion_control" = "bbr";
-    };
-
     xdg.mime.defaultApplications = {
       "text/html" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
@@ -13,23 +8,6 @@
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
     };
-
-    boot.initrd.availableKernelModules = lib.mkAfter [ "usb_storage" "sd_mod" ];
-
-    boot.loader = {
-      efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot/efi";
-      grub.efiSupport = true;
-      grub.enable = true;
-      grub.device = "nodev";
-      grub.useOSProber = true;
-    };
-
-    # https://github.com/NixOS/nixpkgs/issues/149812
-    environment.extraInit = ''
-	export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
-	'';
-
 
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
@@ -102,7 +80,10 @@
     programs.dconf.enable = true;
     programs.npm.enable = true;
 
+    # distrobox-create -i ubuntu:24.04 -n ubuntu -H /home/ubuntu -r -p -I
     virtualisation.docker.enable = true;
+    virtualisation.podman.enable = true;
+
 
     # flatpak
     services.flatpak.enable = true;
@@ -171,8 +152,4 @@
       xclip
     ]);
 
-    # Fonts
-    fonts.packages = with pkgs; [
-      nerd-fonts.fira-code
-    ];
   }

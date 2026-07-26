@@ -37,7 +37,7 @@
 
 
           home-manager.nixosModules.home-manager
-          odrive-udev.nixosModules.default
+          # odrive-udev.nixosModules.default
         ];
       };
 
@@ -64,7 +64,7 @@
           # ./modules/wireguard.nix
 
           home-manager.nixosModules.home-manager
-          odrive-udev.nixosModules.default
+          # odrive-udev.nixosModules.default
         ];
       };
     };

@@ -29,9 +29,6 @@
       screen
       tmux
       traceroute
-      (pkgs.python3.withPackages (ps: with ps; [
-	  pyqt5
-      ]))
       pkgs.qt5.qtwayland
 
       # LSPs

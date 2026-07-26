@@ -12,7 +12,7 @@ in {
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    extraPackages = with pkgs; [
+    extraPackages =  [
       customized_sddm_astronaut # change the name of the package here to the one you created
      ];
 

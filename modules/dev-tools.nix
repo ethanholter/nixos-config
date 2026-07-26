@@ -8,39 +8,42 @@
       acpica-tools
       autoconf
       automake
-      avra
-      avrdude
-      cargo
       claude-code
       dig
       distrobox
       ethtool
       fzf
-      gcc
-      gdb
       gh
       git
       gnumake
+      gtkwave
       iperf3
       lazygit
       libtool
       neovim
       nmap
-      gtkwave
+      pkgs.qt5.qtwayland
       platformio
       screen
       tmux
       traceroute
-      pkgs.qt5.qtwayland
 
-      # LSPs
-      lua-language-server
-      clang-tools
-      nixd
-
-      # Languages / package managers / compilers
-      rustc
+      # Languages
+      avra
+      avrdude
+      cargo
+      gcc
+      gdb
       python3
+      rustc
+
+      # Language development tools
+      basedpyright
+      clang-tools
+      lua-language-server
+      nixd
+      ruff
+      nixfmt
 
     ]
   );

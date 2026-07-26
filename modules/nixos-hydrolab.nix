@@ -1,7 +1,11 @@
-# Add this to your NixOS configuration.nix (or import it)
+# Almost entirely vibecoded configuration for use in IoT project "Hydrolab Pro Grow" in spring 2026.
+# sets up a bunch of various services required for the project running locally for the demo.
+# also sets up some self-signed certs and fake domains because we were being kinda sneaky for the demo.
+# (we never hosted anything on the internet, just pretended to with local stuff)
+
 # Routes hydrolab-pro.com and grafana.hydrolab-pro.com to localhost via nginx + self-signed TLS
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Map domains to localhost
@@ -84,5 +88,8 @@
   '';
 
   # Open ports 80 (redirect) and 443 (HTTPS)
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }

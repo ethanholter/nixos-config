@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-    programs.nix-ld = {
+  programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
       alsa-lib.out
@@ -29,8 +29,11 @@
     ];
   };
 
-  environment.systemPackages = lib.mkAfter (with pkgs; [
-    libxcomposite
-  ]);
+  environment.systemPackages = lib.mkAfter (
+    with pkgs;
+    [
+      libxcomposite
+    ]
+  );
 
 }

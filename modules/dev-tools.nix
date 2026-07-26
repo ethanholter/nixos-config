@@ -1,11 +1,13 @@
 { pkgs, lib, ... }:
 {
-  environment.systemPackages = lib.mkAfter (with pkgs; [
+  environment.systemPackages = lib.mkAfter (
+    with pkgs;
+    [
 
       # Tools
       acpica-tools
-      autoconf 
-      automake 
+      autoconf
+      automake
       avra
       avrdude
       cargo
@@ -19,7 +21,7 @@
       gh
       git
       gnumake
-      iperf3 
+      iperf3
       lazygit
       libtool
       neovim
@@ -34,12 +36,14 @@
       # LSPs
       lua-language-server
       clang-tools
+      nixd
 
       # Languages / package managers / compilers
       rustc
       python3
 
-  ]);
+    ]
+  );
 
   home-manager.users.ethan = {
     programs.vscode = {
@@ -47,7 +51,6 @@
       package = pkgs.vscode.fhs;
     };
   };
-
 
   # make python less of a pain in the ass
   environment.sessionVariables.QT_QPA_PLATFORM = "wayland";

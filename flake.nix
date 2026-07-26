@@ -9,15 +9,28 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, odrive-udev, ... }: let
-    unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-  in {
-    nixosConfigurations = {
-
-      desktop = nixpkgs.lib.nixosSystem {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      odrive-udev,
+      ...
+    }:
+    let
+      unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
-        specialArgs = { inherit unstable; };
-        modules = [
+        config.allowUnfree = true;
+      };
+    in
+    {
+      nixosConfigurations = {
+
+        desktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit unstable; };
+          modules = [
             ./configuration.nix
             ./devices/desktop.nix
             ./devices/hardware-desktop.nix
@@ -35,38 +48,37 @@
             ./modules/nix-ld.nix
             # ./modules/wireguard.nix
 
+            home-manager.nixosModules.home-manager
+            # odrive-udev.nixosModules.default
+          ];
+        };
 
-          home-manager.nixosModules.home-manager
-          # odrive-udev.nixosModules.default
-        ];
-      };
+        thinkpad = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit unstable; };
+          modules = [
+            ./configuration.nix
+            ./devices/hardware-thinkpad.nix
+            ./devices/thinkpad.nix
+            ./modules/bluetooth.nix
+            ./modules/bootloader.nix
+            ./modules/desktop-apps.nix
+            ./modules/desktop-environments/gnome.nix
+            ./modules/dev-tools.nix
+            ./modules/fonts.nix
+            ./modules/gaming.nix
+            ./modules/haxxing.nix
+            ./modules/home-manager.nix
+            ./modules/locale.nix
+            ./modules/networking.nix
+            ./modules/nix-ld.nix
+            # ./modules/nixos-hydrolab.nix
+            # ./modules/wireguard.nix
 
-      thinkpad = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit unstable; };
-        modules = [
-          ./configuration.nix
-          ./devices/hardware-thinkpad.nix
-          ./devices/thinkpad.nix
-          ./modules/bluetooth.nix
-          ./modules/bootloader.nix
-          ./modules/desktop-apps.nix
-          ./modules/desktop-environments/gnome.nix
-          ./modules/dev-tools.nix
-          ./modules/fonts.nix
-          ./modules/gaming.nix
-          ./modules/haxxing.nix
-          ./modules/home-manager.nix
-          ./modules/locale.nix
-          ./modules/networking.nix
-          ./modules/nix-ld.nix
-          ./modules/nixos-hydrolab.nix
-          # ./modules/wireguard.nix
-
-          home-manager.nixosModules.home-manager
-          # odrive-udev.nixosModules.default
-        ];
+            home-manager.nixosModules.home-manager
+            # odrive-udev.nixosModules.default
+          ];
+        };
       };
     };
-  };
 }

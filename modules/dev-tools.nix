@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 {
   environment.systemPackages = lib.mkAfter (with pkgs; [
+
+      # Tools
       acpica-tools
       autoconf 
       automake 
@@ -20,23 +22,26 @@
       iperf3 
       lazygit
       libtool
-      logisim-evolution
       neovim
       nmap
       gtkwave
       platformio
-      putty
-      python3
-      rustc
       screen
       tmux
       traceroute
-      vscode
-      vscode.fhs
       (pkgs.python3.withPackages (ps: with ps; [
 	  pyqt5
       ]))
       pkgs.qt5.qtwayland
+
+      # LSPs
+      lua-language-server
+      clang-tools
+
+      # Languages / package managers / compilers
+      rustc
+      python3
+
   ]);
 
   home-manager.users.ethan = {

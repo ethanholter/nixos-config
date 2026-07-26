@@ -21,8 +21,10 @@
             ./configuration.nix
             ./devices/desktop.nix
             ./devices/hardware-desktop.nix
+            ./modules/bluetooth.nix
             ./modules/bootloader.nix
             ./modules/desktop-environments/gnome.nix
+            ./modules/desktop-apps.nix
             ./modules/dev-tools.nix
             ./modules/fonts.nix
             ./modules/gaming.nix
@@ -31,7 +33,7 @@
             ./modules/locale.nix
             ./modules/networking.nix
             ./modules/nix-ld.nix
-            ./modules/wireguard.nix
+            # ./modules/wireguard.nix
 
 
           home-manager.nixosModules.home-manager
@@ -46,7 +48,9 @@
           ./configuration.nix
           ./devices/hardware-thinkpad.nix
           ./devices/thinkpad.nix
+          ./modules/bluetooth.nix
           ./modules/bootloader.nix
+          ./modules/desktop-apps.nix
           ./modules/desktop-environments/gnome.nix
           ./modules/dev-tools.nix
           ./modules/fonts.nix
@@ -57,7 +61,7 @@
           ./modules/networking.nix
           ./modules/nix-ld.nix
           ./modules/nixos-hydrolab.nix
-          ./modules/wireguard.nix
+          # ./modules/wireguard.nix
 
           home-manager.nixosModules.home-manager
           odrive-udev.nixosModules.default

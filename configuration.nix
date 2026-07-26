@@ -1,31 +1,12 @@
 { lib, pkgs, unstable, ... }:
 
 {
-    xdg.mime.defaultApplications = {
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
-    };
 
     # Allows userspace programs to aquire realtime cpu scheduling (eg PipeWire)
     security.rtkit.enable = true;
 
-    hardware.bluetooth = {
-	enable = true;
-	powerOnBoot = true;
-	settings = {
-	    General = {
-		Experimental = true;
-		ControllerMode="dual";
-		KernelExperimental = "6fbaf188-05e0-496a-9885-d6ddfdb4e03e";
-	    };
-	};
-    };
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     nix.settings.allowed-users = [ "ethan" ];
-
     nix.gc = {
       automatic = true;
       dates = "weekly";
@@ -105,51 +86,33 @@
 
     # Packages
     environment.systemPackages = lib.mkAfter (with pkgs; [
-      arduino-ide
-      brightnessctl
-      chromium
       coreutils-full
-      discord
-      drawio
-      unstable.rpi-imager
-      gnome-frog
       efibootmgr
       ffmpeg
-      firefox
       dnsmasq
       fwupd
       zoxide
-      google-chrome
-      gparted
       gtk3
       home-manager
       htop
       inetutils
       iverilog
       liblc3
-      libreoffice
       lshw
       metasploit
       fastfetch
       nix-index
-      obsidian
       os-prober
-      pavucontrol
       pciutils
       progress
-      tor-browser
       qemu
       ripgrep
-      spotify
       steam-run
       sticky
-      teams-for-linux
-      thunderbird
       tree
       vim
       wget
       wineWow64Packages.stable
       xclip
     ]);
-
   }

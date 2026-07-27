@@ -31,12 +31,18 @@
           system = "x86_64-linux";
           specialArgs = { inherit unstable; };
           modules = [
+            # Configuration
             ./configuration.nix
             ./devices/desktop.nix
             ./devices/hardware-desktop.nix
+            
+            # Desktop environment
+            ./modules/desktop-environments/gnome.nix
+            ./modules/display-managers/gdm.nix
+
+            # Modules
             ./modules/bluetooth.nix
             ./modules/bootloader.nix
-            ./modules/desktop-environments/gnome.nix
             ./modules/desktop-apps.nix
             ./modules/dev-tools.nix
             ./modules/fonts.nix
@@ -48,6 +54,7 @@
             ./modules/nix-ld.nix
             # ./modules/wireguard.nix
 
+            # Flakes
             home-manager.nixosModules.home-manager
             # odrive-udev.nixosModules.default
           ];
@@ -60,10 +67,16 @@
             ./configuration.nix
             ./devices/hardware-thinkpad.nix
             ./devices/thinkpad.nix
+
+            # Desktop environment
+            ./modules/desktop-environments/gnome.nix
+            ./modules/desktop-environments/hyprland.nix
+            ./modules/display-managers/gdm.nix
+
+            # Modules
             ./modules/bluetooth.nix
             ./modules/bootloader.nix
             ./modules/desktop-apps.nix
-            ./modules/desktop-environments/gnome.nix
             ./modules/dev-tools.nix
             ./modules/fonts.nix
             ./modules/gaming.nix
@@ -72,9 +85,9 @@
             ./modules/locale.nix
             ./modules/networking.nix
             ./modules/nix-ld.nix
-            # ./modules/nixos-hydrolab.nix
             # ./modules/wireguard.nix
-
+            
+            # Flakes
             home-manager.nixosModules.home-manager
             # odrive-udev.nixosModules.default
           ];

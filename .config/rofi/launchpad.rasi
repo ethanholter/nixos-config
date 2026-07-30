@@ -1,0 +1,83 @@
+// https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown
+// heirarchy info: https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown#base-widgets
+
+* {
+    bg0:  #24242480;
+    bg1:  #363636;
+    bg2:  #f5f5f520;
+    bg3:  #f5f5f540;
+    bg4:  #0860f2E6;
+
+    fg0:  #f5f5f5;
+    fg1:  #f5f5f580;
+
+    background-color: transparent;
+    text-color:       black;
+    padding:          0px;
+    margin:           0px;
+}
+
+inputbar {
+  background-color: @bg2;
+
+  margin:   0px calc( 50% - 120px );
+  padding:  2px 4px;
+  spacing:  4px;
+
+  border-color:   @bg3;
+    
+  children: [entry];
+}
+
+window {
+  fullscreen: true;
+}
+
+inputbar {
+    margin: 100px 30% 0px 30%;
+    border-radius: 10px;
+}
+
+entry {
+    placeholder: "Search";
+    placeholder-color: gray;
+    horizontal-align: 0;
+    font: "Liberation 28";
+    hide-cursor-on-empty: true;
+}
+
+listview {
+  // margin:   48px calc( 50% - 560px );
+  margin: 140px 48px 0px 48px;
+  spacing:  24px;
+  columns: 8;
+  fixed-columns: true;
+}
+
+// change cursor when hovering
+element, element-text, element-icon {
+  cursor: pointer;
+}
+
+element {
+  padding:      8px;
+  spacing:      4px;
+
+  children: [ element-icon, element-text ];
+  orientation:    vertical;
+  border-radius:  16px;
+}
+
+element-icon {
+    size: 5em;
+}
+
+element.selected {
+    background-color: @bg2;
+}
+
+element-text {
+    background-color: @bg3;
+    horizontal-align: 0.5;
+    border-radius: 5px;
+}

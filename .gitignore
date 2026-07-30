@@ -1,4 +1,3 @@
 device-configuration.nix
 result
 secret
-flake.lock

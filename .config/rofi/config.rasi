@@ -1,0 +1,17 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ drun ];
+  icon-theme: "Reversal";
+  fallback-icon: "application-default-icon";
+  hover-select: true;
+  drun-display-format: "{name}";
+  
+  // unbind mouse from entry select and rebind to entry accept
+  // this allows single click to open app.
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
+}
+
+
+@theme "launchpad.rasi"
+

@@ -30,11 +30,11 @@
 
   home-manager.users.ethan = { config, ... }: {
     xdg.configFile."hypr" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/hyprland";
+      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/hyprland";
       force = true;
     };
     xdg.configFile."rofi" = {
-      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/.config/rofi";
+      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/rofi";
       force = true;
     };
   };

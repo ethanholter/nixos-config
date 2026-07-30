@@ -34,7 +34,7 @@
             ./configuration.nix
             ./devices/desktop.nix
             ./devices/hardware-desktop.nix
-            
+
             # Desktop environment
             ./modules/desktop-environments/gnome.nix
             ./modules/display-managers/gdm.nix
@@ -85,7 +85,7 @@
             ./modules/networking.nix
             ./modules/nix-ld.nix
             # ./modules/wireguard.nix
-            
+
             # Flakes
             home-manager.nixosModules.home-manager
             # odrive-udev.nixosModules.default
@@ -93,4 +93,12 @@
         };
       };
     };
+
+  # workaround to use flake.nix (or flake.lock) without commiting to git or having to
+  # constantly commit and uncommit
+  # https://discourse.nixos.org/t/can-i-use-flakes-within-a-git-repo-without-committing-flake-nix/18196/5
+
+  # git add --intent-to-add flake.nix
+  # git update-index --assume-unchanged flake.nix
+
 }

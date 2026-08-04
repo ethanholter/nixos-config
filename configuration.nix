@@ -112,6 +112,14 @@
       liblc3
       lshw
       metasploit
+      lutris
+        (lutris.override {
+        extraLibraries =  pkgs: [
+          umu-launcher
+          umu-launcher-unwrapped
+          proton-ge-bin
+        ];
+      })
       fastfetch
       nix-index
       os-prober

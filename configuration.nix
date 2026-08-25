@@ -99,6 +99,7 @@
     with pkgs;
     [
       coreutils-full
+      sbctl
       efibootmgr
       ffmpeg
       dnsmasq

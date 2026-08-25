@@ -1,12 +1,14 @@
-{ lib, pkgs, ... }: 
+{ lib, pkgs, ... }:
 
 {
-    # xserver
-    services.xserver.enable = true;
-    services.xserver.excludePackages = [ pkgs.xterm ];
+  # xserver
+  services.xserver.enable = true;
+  services.xserver.excludePackages = [ pkgs.xterm ];
 
-    services.desktopManager.gnome.enable = true;
-    environment.gnome.excludePackages = (with pkgs; [
+  services.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
       decibels
       epiphany
       geary
@@ -14,9 +16,12 @@
       gnome-music
       gnome-tour
       gnome-user-docs
-    ]);
+    ]
+  );
 
-    environment.systemPackages = lib.mkAfter (with pkgs; [
+  environment.systemPackages = lib.mkAfter (
+    with pkgs;
+    [
       gnome-tweaks
       gnomeExtensions.caffeine
       gnomeExtensions.dash-to-dock
@@ -25,68 +30,67 @@
       bibata-cursors
       dconf-editor
       wmctrl
-    ]);
+    ]
+  );
 
-    # https://github.com/NixOS/nixpkgs/issues/149812
-    environment.extraInit = ''
-        export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+  # https://github.com/NixOS/nixpkgs/issues/149812
+  environment.extraInit = ''
+    export XDG_DATA_DIRS="$XDG_DATA_DIRS:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+  '';
+
+  # https://wiki.nixos.org/wiki/Steam - fix steam game icons
+  home-manager.users.ethan = { lib, ... }: {
+    home.activation.fixSteamIcons = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      for f in ~/.local/share/applications/*.desktop; do
+          id=$(grep -Eo 'steam://rungameid/[0-9]+' "$f" | sed 's#.*/##') || true
+          [ -n "$id" ] || continue
+          last=$(tail -n1 "$f" || true)
+          want="StartupWMClass=steam_app_$id"
+          [ "$last" = "$want" ] || echo "$want" >> "$f"
+      done
     '';
+  };
 
-
-    # https://wiki.nixos.org/wiki/Steam - fix steam game icons
-    home-manager.users.ethan = {lib, ... }: {
-        home.activation.fixSteamIcons = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        for f in ~/.local/share/applications/*.desktop; do
-            id=$(grep -Eo 'steam://rungameid/[0-9]+' "$f" | sed 's#.*/##') || true
-            [ -n "$id" ] || continue
-            last=$(tail -n1 "$f" || true)
-            want="StartupWMClass=steam_app_$id"
-            [ "$last" = "$want" ] || echo "$want" >> "$f"
-        done
-        '';
-    };
-
-
-    programs.dconf.profiles.user.databases = [
+  programs.dconf.profiles.user.databases = [
     {
-	lockAll = true; # prevents overriding
-	    settings = {
-		"org/gnome/desktop/wm/preferences" = {
-		    button-layout = ":minimize,maximize,close";
-		};
-		"org/gnome/desktop/interface/clock-format" = {
-		    clock-format = "12h";
-		};
-		"org/gnome/desktop/interface" = {
-		    icon-theme = "Reversal";
-		};
-		"org/gnome/desktop/interface" = {
-		    cursor-theme = "Bibata-Modern-Ice";
-		};
-		"org/gnome/desktop/interface" = {
-		    enable-hot-corners = false;
-		};
-		"org/gnome/desktop/notifications" = {
-		    show-in-lock-screen = false;
-		};
-		"org/gnome/desktop/background" = {
-		    picture-uri = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
-		    picture-uri-dark = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
-		};
-		"org/gnome/settings-daemon/plugins/media-keys" = {
-		    custom-keybindings = [
-			"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-		    ];
-		};
+      lockAll = true; # prevents overriding
+      settings = {
+        "org/gnome/desktop/wm/preferences" = {
+          button-layout = ":minimize,maximize,close";
+        };
+        "org/gnome/desktop/interface/clock-format" = {
+          clock-format = "12h";
+        };
+        "org/gnome/desktop/interface" = {
+          icon-theme = "Reversal";
+        };
+        "org/gnome/desktop/interface" = {
+          cursor-theme = "Bibata-Modern-Ice";
+        };
+        "org/gnome/desktop/interface" = {
+          enable-hot-corners = false;
+        };
+        "org/gnome/desktop/notifications" = {
+          show-in-lock-screen = false;
+        };
+        "org/gnome/desktop/background" = {
+          picture-uri = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
+          picture-uri-dark = "file:///etc/nixos/assets/wallpapers/earthset.jpeg";
+        };
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          custom-keybindings = [
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          ];
+        };
 
-		# ============= Key bindings ============
+        # ============= Key bindings ============
 
-		"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-		    name = "Focus or Open Spotify";
-		    command = "bash -c 'wmctrl -xa spotify.Spotify || spotify'";
-		    binding = "<Shift><Super>s";
-		};
-	    };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          name = "Focus or Open Spotify";
+          command = "bash -c 'wmctrl -xa spotify.Spotify || spotify'";
+          binding = "<Shift><Super>s";
+        };
+      };
     }
-    ];
+  ];
 }

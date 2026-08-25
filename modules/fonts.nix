@@ -1,7 +1,16 @@
 { pkgs, ... }:
 {
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-  ];
+
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMono Nerd Font" ];
+      };
+    };
+  };
 }

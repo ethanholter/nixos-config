@@ -30,7 +30,7 @@
     device = "/dev/disk/by-uuid/d4f278d4-0ba5-4aae-9f15-c9cc8053796e";
     fsType = "ext4";
   };
-  fileSystems."/boot/efi" = {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/3402-65FF";
     fsType = "vfat";
   };

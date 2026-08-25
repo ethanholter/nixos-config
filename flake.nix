@@ -37,6 +37,8 @@
 
             # Desktop environment
             ./modules/desktop-environments/gnome.nix
+            ./modules/desktop-environments/hyprland.nix
+            ./modules/desktop-environments/common.nix
             ./modules/display-managers/gdm.nix
 
             # Modules
@@ -51,6 +53,7 @@
             ./modules/locale.nix
             ./modules/networking.nix
             ./modules/nix-ld.nix
+            ./modules/keychron.nix
             # ./modules/wireguard.nix
 
             # Flakes
@@ -70,6 +73,7 @@
             # Desktop environment
             ./modules/desktop-environments/gnome.nix
             ./modules/desktop-environments/hyprland.nix
+            ./modules/desktop-environments/common.nix
             ./modules/display-managers/gdm.nix
 
             # Modules

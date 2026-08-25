@@ -13,19 +13,9 @@
     nautilus
     bibata-cursors
     hyprpaper
+    hyprshot
     brightnessctl
     playerctl
-  ];
-
-  programs.dconf.profiles.user.databases = [
-    {
-      lockAll = true; # prevents overriding
-      settings = {
-        "org/gnome/desktop/interface" = {
-          cursor-theme = "Bibata-Modern-Ice";
-        };
-      };
-    }
   ];
 
   home-manager.users.ethan = { config, ... }: {
@@ -35,6 +25,14 @@
     };
     xdg.configFile."rofi" = {
       source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/rofi";
+      force = true;
+    };
+    xdg.configFile."waybar" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/waybar";
+      force = true;
+    };
+    xdg.configFile."kitty" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/kitty";
       force = true;
     };
   };

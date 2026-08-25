@@ -121,6 +121,8 @@
         ];
       })
       fastfetch
+      krita
+      gimp3-with-plugins
       nix-index
       os-prober
       pciutils

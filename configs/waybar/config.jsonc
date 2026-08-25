@@ -1,3 +1,4 @@
+// https://github.com/Alexays/Waybar/wiki/Configuration
 {
     "layer": "top",
     "height": 30,
@@ -13,6 +14,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "clock": {
+        "format": "{:%I:%M %p}",
         "format-alt": "{:%a, %d. %b  %H:%M}"
     }
 

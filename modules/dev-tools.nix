@@ -36,6 +36,7 @@
       gdb
       python3
       rustc
+      jdk25
 
       # Language development tools
       basedpyright

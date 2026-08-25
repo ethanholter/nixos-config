@@ -7,7 +7,7 @@
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi";
+    efi.efiSysMountPoint = "/boot";
     grub.efiSupport = true;
     grub.enable = true;
     grub.device = "nodev";

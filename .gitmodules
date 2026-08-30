@@ -1,3 +1,4 @@
-[submodule ".config/hyprland"]
+[submodule "configs/hyprland"]
 	path = configs/hyprland
 	url = https://github.com/ethanholter/hyprdots
+	branch = main

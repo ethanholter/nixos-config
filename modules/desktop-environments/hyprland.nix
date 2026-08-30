@@ -16,6 +16,8 @@
     hyprshot
     brightnessctl
     playerctl
+    mako
+    libnotify
   ];
 
   home-manager.users.ethan = { config, ... }: {

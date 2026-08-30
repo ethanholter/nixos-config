@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
 {
+
+  # to temporarily disable run:
+  # sudo systemctl stop firewall 
   networking.networkmanager.enable = true;
 
   # fixes issues with ssh via mDNS
@@ -8,7 +11,7 @@
       67
       53
     ];
-    allowedTCPPorts = [ 53 ];
+    allowedTCPPorts = [ 53 5000 5001 ];
   };
 
   # DNS, mDNS
@@ -22,7 +25,11 @@
       dnsmasq
     ]
   );
-
+    
+  # override eduroam's fasciast DNS server
+  networking.extraHosts = ''
+    104.166.250.211 eholter.com
+  '';
   boot.kernel.sysctl = {
     "net.core.default_qdisc" = "fq"; # Required for BBR
     "net.ipv4.tcp_congestion_control" = "bbr";

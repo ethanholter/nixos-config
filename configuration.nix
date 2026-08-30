@@ -73,6 +73,7 @@
   programs.npm.enable = true;
 
   # distrobox-create -i ubuntu:24.04 -n ubuntu -H /home/ubuntu -r -p -I
+  # export XAUTHORITY=/run/user/$(id -u)/gdm/Xauthority # <--- add to bashrc
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
 

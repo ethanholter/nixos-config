@@ -88,7 +88,7 @@
             ./modules/locale.nix
             ./modules/networking.nix
             ./modules/nix-ld.nix
-            # ./modules/wireguard.nix
+            ./modules/wireguard.nix
 
             # Flakes
             home-manager.nixosModules.home-manager

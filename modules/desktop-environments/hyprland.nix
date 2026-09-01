@@ -37,5 +37,9 @@
       source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/kitty";
       force = true;
     };
+    xdg.configFile."mako" = {
+      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/configs/mako";
+      force = true;
+    };
   };
 }

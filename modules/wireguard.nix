@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
+  # Must turn off NAT acceleration
   networking.wg-quick.interfaces."wg0".configFile = "/etc/nixos/secret/wg0.conf";
-  
   environment.systemPackages = lib.mkAfter (
     with pkgs;
     [

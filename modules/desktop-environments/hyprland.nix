@@ -18,6 +18,7 @@
     playerctl
     mako
     libnotify
+    swayosd
   ];
 
   home-manager.users.ethan = { config, ... }: {

@@ -89,7 +89,7 @@
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
-
+  programs.zoom-us.enable = true;
   programs.command-not-found.enable = false;
   programs.bash.interactiveShellInit = ''
     source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
